@@ -1,0 +1,141 @@
+                                Topic: database Testing 
+                                ------------------------
+
+
+
+Database Testing:
+-----------------
+
+
+Steps:
+------
+
+1. create a database
+
+    create database 'give database name";
+
+2. Show database
+
+     show databases;
+
+3. change the required database
+
+     use "give database name";
+
+4. get the emp and dept tables data from google and paste in the edit option
+
+5. now tables are ready in the daatbase
+
+
+To perform database testing we require 4 steps
+
+   1. create object for database--class.forName(DBDriver).newinstance();
+   2. create database connection
+   3. insert Query
+   3. Execute Query
+   
+
+package Project123;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class workignwithdatabase {
+
+	public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException 
+	{
+		String url="jdbc:mysql://localhost:3306/";
+		String dbname="oitv5";
+		String DBdriver="com.mysql.jdbc.Driver";
+		String username="root";
+		String password="onlineqa";
+		
+		Connection conn;
+		
+		//create object
+		Class.forName(DBdriver).newInstance();
+		
+		//create database connection
+		conn=DriverManager.getConnection(url+dbname,username,password);
+		
+		//insert query
+		PreparedStatement ps=conn.prepareStatement("select*from emp");
+		
+		//execute query
+		ResultSet rs=ps.executeQuery();
+		
+		while(rs.next())
+		{
+          
+			System.out.println(rs.getString(3));
+			
+		}
+		
+
+
+
+	}
+
+}
+
+Ex2:
+----
+
+  package Project123;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class workignwithdatabase {
+
+	public static void main(String[] args) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException 
+	{
+		String url="jdbc:mysql://localhost:3306/";
+		String dbname="oitv5";
+		String DBdriver="com.mysql.jdbc.Driver";
+		String username="root";
+		String password="onlineqa";
+		
+		Connection conn;
+		
+		//create object
+		Class.forName(DBdriver).newInstance();
+		
+		//create database connection
+		conn=DriverManager.getConnection(url+dbname,username,password);
+		
+		//insert query
+		PreparedStatement ps=conn.prepareStatement("select*from emp");
+		
+		//execute query
+		ResultSet rs=ps.executeQuery();
+		
+		while(rs.next())
+		{
+          for(int i=1;i<8;i++)
+			{
+			System.out.print(rs.getString(i)+"  ");
+			}
+			
+			System.out.println();
+		
+		}
+		
+
+
+
+	}
+
+}
+
+
+
+
+   
+
